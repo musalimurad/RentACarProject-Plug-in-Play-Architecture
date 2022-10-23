@@ -11,5 +11,8 @@ namespace Business.Abstract
     public interface ICarService
     {
         public IDataResult<List<Car>> GetAllCars();
+        public IResult Add(Car car);
+        public IResult Update(Car car);
+        public IResult Delete(Car car); 
     }
 }
