@@ -1,0 +1,25 @@
+﻿@using Entities.Concrete
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model HomeVM
+
+<div class="container">
+    <h2 class="text-center"> Rent-A-Car</h2>
+    <div class="carList">
+        @foreach (var car in Model.Cars)
+        {
+            <div class="carItem">
+                <img src="@car.PhotoUrl" alt="" class="img-fluid" />
+               <div class="d-flex align-items-center justify-content-between">
+                    <h5>@car.Name</h5>
+                    <h6 style="color:green;"> @car.DailyPrice AZN</h6>
+               </div>
+            </div>
+        }
+       
+      
+       
+    </div>
+
+</div>

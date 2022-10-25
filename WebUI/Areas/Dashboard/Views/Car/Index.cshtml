@@ -1,0 +1,27 @@
+﻿@using Entities.Concrete
+@{
+    ViewData["Title"] = "Home Dashboard";
+}
+@model IEnumerable<Car>
+
+<div class="container">
+    <ul class="navbar-nav flex-grow-1">
+       
+        <li class="nav-item">
+            <a class=" btn btn-success my-3" asp-area="Dashboard" asp-controller="Car" asp-action="create">Create Car</a>
+        </li>
+    </ul>
+    <div class="carList d-block">
+        @foreach (var car in Model)
+        {
+            <div class="carItem">
+                <img  src="@car.PhotoUrl" alt="" class="img-fluid" />
+                <h6><a class="text-decoration-none" style="color:black;" asp-area="Dashboard" asp-controller="Car" asp-action="edit" asp-route-id="@car.Id">@car.Name</a></h6>
+            </div>
+        }
+
+
+
+    </div>
+
+</div>

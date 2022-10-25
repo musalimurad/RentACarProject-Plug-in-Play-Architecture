@@ -33,9 +33,14 @@ namespace Business.Concrete
             return new SuccessResult(Message.CarDeleteSuccess);
         }
 
-        public IDataResult<List<Car>> GetAllCars()
+        public IDataResult<List<Car>> GetAllCarss()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Message.CarDataLoadedSuccess);
+        }
+
+        public Car getByIdCar(int carId)
+        {
+            return _carDal.Get(c => c.Id == carId);
         }
 
         public IResult Update(Car car)
@@ -43,6 +48,11 @@ namespace Business.Concrete
             _carDal.Update(car);
 
             return new SuccessResult(Message.CarUpdateSuccess);
+        }
+
+        List<Car> ICarService.GetAllCars()
+        {
+            return _carDal.GetAll();
         }
     }
 }

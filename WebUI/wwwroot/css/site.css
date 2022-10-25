@@ -1,0 +1,34 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.carList {
+    padding: 20px;
+    border: 1px solid red;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+    .carList .carItem {
+        max-height: 300px;
+        padding: 20px;
+    }
+
+        .carList .carItem img {
+            height: 200px;
+        }
