@@ -1,9 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
+            ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new SuccessResult(Message.CarSuccess);
         }
@@ -33,14 +37,19 @@ namespace Business.Concrete
             return new SuccessResult(Message.CarDeleteSuccess);
         }
 
-        public IDataResult<List<Car>> GetAllCarss()
+        public IDataResult<List<Car>> GetAllCars()
         {
+            //var a = 2;
+            //if (a==2)
+            //{
+            //    return new ErrorDataResult<List<Car>>(Message.CarDataLoadedError);
+            //}
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Message.CarDataLoadedSuccess);
         }
 
-        public Car getByIdCar(int carId)
+        public IDataResult<Car> getByIdCar(int carId)
         {
-            return _carDal.Get(c => c.Id == carId);
+            return new SuccessDataResult<Car>( _carDal.Get(c => c.Id == carId), Message.CarDataLoadedSuccess);
         }
 
         public IResult Update(Car car)
@@ -50,9 +59,6 @@ namespace Business.Concrete
             return new SuccessResult(Message.CarUpdateSuccess);
         }
 
-        List<Car> ICarService.GetAllCars()
-        {
-            return _carDal.GetAll();
-        }
+     
     }
 }

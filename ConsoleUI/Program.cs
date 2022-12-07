@@ -13,7 +13,7 @@ Car deleteCar1 = new() { Id = 2 };
 
 Car testCarUpdate = new() { Id = 3, Description = "test-2" };
 carManager.Update(testCarUpdate);
-var result = carManager.GetAllCarss();
+var result = carManager.GetAllCars();
 foreach (var car in result.Data)
 {
     Console.WriteLine(car.Description);

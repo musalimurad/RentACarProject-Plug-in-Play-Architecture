@@ -21,7 +21,7 @@ namespace WebUI.Controllers
         {
             HomeVM vm = new HomeVM()
             {
-                Cars = _carService.GetAllCars()
+                Cars = _carService.GetAllCars().Data
             };
            
             return View(vm);

@@ -18,7 +18,7 @@ namespace WebUI.Areas.Dashboard.Controllers
         // GET: CarController
         public ActionResult Index()
         {
-            var cars = _carService.GetAllCars();
+            var cars = _carService.GetAllCars().Data;
             return View(cars);
         }
 

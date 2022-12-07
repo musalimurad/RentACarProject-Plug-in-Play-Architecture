@@ -12,6 +12,8 @@ namespace Business.Constants
         public static string CarError = "Car added Error";
         public static string CarUpdateSuccess = "Car update successfuly";
         public static string CarDataLoadedSuccess = "Car Data Loaded successfuly";
+        public static string CarDataLoadedError = "Car Data Loaded error";
+
         public static string CarDeleteSuccess = "Car Delete successfuly";
 
 
